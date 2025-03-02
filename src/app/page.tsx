@@ -1,9 +1,9 @@
-import { env } from "@/utils/env";
+import { HeroSection } from "@/components/layout/home/hero-section";
 
 export default function Home() {
     return (
-        <div className="flex h-screen w-full items-center justify-center">
-            <h1>{env.NEXT_PUBLIC_APP_NAME}</h1>
-        </div>
+        <main className="flex min-h-screen w-full flex-col">
+            <HeroSection />
+        </main>
     );
 }
