@@ -9,6 +9,7 @@ import {
 
 const titles = env.NEXT_PUBLIC_APP_NAME.split(" ");
 
+// motion animations variants
 const containerVariants = {
     hidden: { opacity: 0 },
     visible: {

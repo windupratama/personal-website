@@ -6,6 +6,7 @@ import localFont from "next/font/local";
 import type { Metadata } from "next";
 import { env } from "@/utils/env";
 import { SmoothScroll } from "@/components/ui/smooth-scroll";
+import { Navbar } from "@/components/ui/navbar";
 
 interface RootLayoutProps {
     children: React.ReactNode;
@@ -37,7 +38,10 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
             <body
                 className={`${inter.className} ${junicode.variable} ${junicodeItalic.variable} antialiased`}
             >
-                <SmoothScroll>{children}</SmoothScroll>
+                <div className="flex flex-col">
+                    <Navbar />
+                    <SmoothScroll>{children}</SmoothScroll>
+                </div>
             </body>
         </html>
     );
