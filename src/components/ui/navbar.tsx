@@ -65,7 +65,7 @@ const navbarMenuItemsVariants = {
         opacity: 1,
         transition: {
             duration: 0.3,
-            delay: 0.4
+            delay: 0.6
         }
     },
     closed: {
@@ -125,7 +125,7 @@ function NavbarTitle() {
     return (
         <Link href="/">
             <motion.h1
-                className="font-junicode text-3xl uppercase transition-all duration-300 lg:text-4xl"
+                className="font-junicode text-4xl uppercase transition-all duration-300"
                 initial="closed"
                 variants={navbarHeaderVariants}
                 animate={isOpen ? "open" : "closed"}
