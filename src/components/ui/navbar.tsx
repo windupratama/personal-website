@@ -65,7 +65,7 @@ const navbarMenuItemsVariants = {
         opacity: 1,
         transition: {
             duration: 0.3,
-            delay: 0.4
+            delay: 0.6
         }
     },
     closed: {
