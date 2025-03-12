@@ -1,3 +1,7 @@
+/**
+ * a utils function to ensure the env vars are correctly defined
+ **/
+
 import { createEnv } from "@t3-oss/env-nextjs";
 import { z } from "zod";
 

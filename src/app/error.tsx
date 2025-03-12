@@ -1,3 +1,7 @@
+/**
+ * application custom error page
+ **/
+
 "use client";
 
 import { useEffect } from "react";

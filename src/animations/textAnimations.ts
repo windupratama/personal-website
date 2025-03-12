@@ -1,3 +1,7 @@
+/**
+ * a various Motion text animations variants
+ **/
+
 const textFromBlurVariants = {
     hidden: {
         opacity: 0,
