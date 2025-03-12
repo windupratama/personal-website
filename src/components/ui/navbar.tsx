@@ -38,7 +38,6 @@ const navbarMenuItems = [
 const navbarMenuVariants = {
     open: {
         height: "100vh",
-        borderRadius: 0,
         transition: {
             duration: 0.5,
             ease: "easeInOut"
@@ -46,11 +45,10 @@ const navbarMenuVariants = {
     },
     closed: {
         height: 0,
-        borderRadius: "0 0 1rem 1rem",
         transition: {
             duration: 0.5,
             ease: "easeInOut",
-            delay: 0.2
+            delay: 0.4
         }
     }
 };
@@ -163,7 +161,7 @@ function NavbarMenu() {
 
     return (
         <motion.nav
-            className="bg-primary fixed top-0 left-0 z-[997] w-full overflow-hidden"
+            className="fixed top-0 left-0 z-[997] w-full overflow-hidden bg-gradient-to-b from-gray-600/50 to-transparent backdrop-blur-2xl"
             initial="closed"
             variants={navbarMenuVariants}
             animate={isOpen ? "open" : "closed"}
