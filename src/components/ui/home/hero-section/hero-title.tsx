@@ -1,3 +1,7 @@
+/**
+ * a component that contains the application hero section title
+ **/
+
 import { env } from "@/utils/env";
 import * as motion from "motion/react-client";
 import { textFromBottomVariants } from "@/animations/textAnimations";

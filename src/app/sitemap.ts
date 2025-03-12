@@ -1,3 +1,8 @@
+/**
+ * a dynamic sitemap.xml generator
+ * define a list of application URLs that can be crawled by search engines
+ **/
+
 import { env } from "@/utils/env";
 import type { MetadataRoute } from "next";
 

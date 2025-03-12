@@ -1,3 +1,7 @@
+/**
+ * a component that contains the application hero section contents
+ **/
+
 import { cn } from "@/utils/cn";
 import * as motion from "motion/react-client";
 import type { HTMLMotionProps } from "motion/react";
