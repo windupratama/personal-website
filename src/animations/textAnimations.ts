@@ -19,7 +19,7 @@ const textFromBlurVariants = {
 
 const textFromBottomVariants = {
     hidden: {
-        y: 50,
+        y: "100%",
         opacity: 0,
         filter: "blur(8px)"
     },
