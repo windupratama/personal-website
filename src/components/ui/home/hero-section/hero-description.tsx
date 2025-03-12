@@ -1,3 +1,7 @@
+/**
+ * a component that contains the application hero section description
+ **/
+
 import * as motion from "motion/react-client";
 import { textFromBlurVariants } from "@/animations/textAnimations";
 

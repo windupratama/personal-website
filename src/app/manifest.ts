@@ -1,3 +1,8 @@
+/**
+ * a dynamic manifest.json generator
+ * define application metadata
+ **/
+
 import { env } from "@/utils/env";
 import type { MetadataRoute } from "next";
 

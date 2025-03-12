@@ -1,3 +1,7 @@
+/**
+ * a component that provide a smooth scroll effect
+ **/
+
 import { ReactLenis } from "lenis/react";
 
 interface SmoothScrollProps {
