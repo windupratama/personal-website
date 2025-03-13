@@ -11,7 +11,7 @@ const titles = env.NEXT_PUBLIC_APP_NAME.split(" ");
 function HeroTitle() {
     return (
         <div className="flex h-full w-full flex-col items-center justify-end">
-            <div className="self-start overflow-hidden">
+            <div className="-mb-[4vw] self-start overflow-hidden lg:-mb-[3vw]">
                 <motion.h1
                     className="font-junicode text-primary text-[18vw] leading-none font-thin lg:text-[15vw]"
                     variants={textFromBottomVariants}
