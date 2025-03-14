@@ -87,7 +87,11 @@ function NavbarTrigger({ children }: NavbarTriggerProps) {
 function NavbarMenuText() {
     const { isOpen } = useNavbar();
 
-    return <h1>{isOpen ? "Close" : "Menu"}</h1>;
+    return (
+        <h1 className="relative inline-block cursor-pointer before:absolute before:bottom-0 before:left-0 before:h-0.5 before:w-0 before:bg-current before:transition-all before:duration-300 before:content-[''] hover:before:w-full">
+            {isOpen ? "Close" : "Menu"}
+        </h1>
+    );
 }
 
 export { NavbarHeader };
