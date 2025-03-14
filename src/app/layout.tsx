@@ -6,7 +6,7 @@ import localFont from "next/font/local";
 import type { Metadata } from "next";
 import { env } from "@/utils/env";
 import { SmoothScroll } from "@/components/ui/smooth-scroll";
-import { Navbar } from "@/components/ui/navbar";
+import { Navbar } from "@/components/ui/navbar/navbar";
 
 interface RootLayoutProps {
     children: React.ReactNode;
