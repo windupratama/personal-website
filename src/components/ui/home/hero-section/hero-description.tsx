@@ -12,7 +12,7 @@ function HeroDescription() {
                 className="font-junicode text-primary text-lg lg:text-2xl"
                 variants={textFromBlurVariants}
             >
-                Frontend & Backend Developer.
+                A Creative Enthusiast Developer.
             </motion.h1>
         </div>
     );
