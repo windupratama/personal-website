@@ -7,6 +7,7 @@
 import { cn } from "@/utils/cn";
 import { useGridTrailView } from "@/hooks/useGridTrailView";
 import { GridTrailViewProvider } from "@/providers/grid-trail-view-provider";
+import { Children, cloneElement, isValidElement, ReactElement } from "react";
 
 interface GridTrailViewProps extends React.HTMLAttributes<HTMLDivElement> {
     children?: React.ReactNode;
@@ -34,6 +35,42 @@ function GridTrailView({ children, className, ...props }: GridTrailViewProps) {
 }
 
 /**
+ * GridTrailViewFrontLayer is a layer for the children to show up in the front of the grid trail view effect
+ **/
+function GridTrailViewFrontLayer({ children }: { children: React.ReactNode }) {
+    const modifiedChildren = Children.map(children, (child) => {
+        if (isValidElement(child)) {
+            const element = child as ReactElement<{ className?: string }>;
+
+            return cloneElement(element, {
+                className: cn("z-50", element.props.className)
+            });
+        }
+        return child;
+    });
+
+    return <>{modifiedChildren}</>;
+}
+
+/**
+ * GridTrailViewBackLayer is a layer for the children to show up in the back of the grid trail view effect
+ **/
+function GridTrailViewBackLayer({ children }: { children: React.ReactNode }) {
+    const modifiedChildren = Children.map(children, (child) => {
+        if (isValidElement(child)) {
+            const element = child as ReactElement<{ className?: string }>;
+
+            return cloneElement(element, {
+                className: cn("z-[-70]", element.props.className)
+            });
+        }
+        return child;
+    });
+
+    return <>{modifiedChildren}</>;
+}
+
+/**
  * GridTrailTrigger act as a trigger that detects mouse hover on grid cells
  **/
 function GridTrailViewTrigger() {
@@ -43,7 +80,7 @@ function GridTrailViewTrigger() {
 
     return (
         <div
-            className="absolute top-0 left-0 z-50 grid h-screen w-full overflow-hidden"
+            className="absolute top-0 left-0 z-70 grid h-screen w-full overflow-hidden"
             style={{
                 gridTemplateColumns: `repeat(${columns}, 1fr)`
             }}
@@ -88,4 +125,4 @@ function GridTrailViewUIHandler() {
     );
 }
 
-export { GridTrailView };
+export { GridTrailView, GridTrailViewFrontLayer, GridTrailViewBackLayer };
