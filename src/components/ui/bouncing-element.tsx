@@ -201,7 +201,7 @@ function BouncingElement({
     return (
         <div
             ref={bouncingElementRef}
-            className="absolute h-fit w-fit"
+            className="absolute h-fit w-fit overflow-hidden"
             style={{
                 transform: `translate3d(${elementPosition.x}px, ${elementPosition.y}px, 0)`
             }}
