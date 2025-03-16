@@ -1,27 +1,61 @@
+/**
+ * bouncing element related components and configurations
+ **/
+
 "use client";
 
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/utils/cn";
-
-/**
- * bouncing element view related components and configurations
- **/
+import { BouncingElementProvider } from "@/providers/bouncing-element-provider";
+import { useBouncingElement } from "@/hooks/useBouncingElement";
 
 interface BouncingElementViewProps
     extends React.HTMLAttributes<HTMLDivElement> {
     children?: React.ReactNode;
 }
 
+interface BouncingElementContainerProps
+    extends React.HTMLAttributes<HTMLDivElement> {
+    children?: React.ReactNode;
+}
+
+type BouncingElementPosition = "start" | "center" | "end";
+
+interface BouncingElementProps {
+    children?: React.ReactNode;
+    position?: BouncingElementPosition;
+    velocity?: { x: number; y: number };
+}
+
 /**
  * BouncingElementView contains a wrapper that provides bouncing element view to its children
  **/
-function BouncingElementView({
+function BouncingElementView({ children, ...props }: BouncingElementViewProps) {
+    return (
+        <BouncingElementProvider>
+            <BouncingElementContainer {...props}>
+                {children}
+            </BouncingElementContainer>
+        </BouncingElementProvider>
+    );
+}
+
+/**
+ * BouncingElementContainer is a main layer that control the bouncing element boundary.
+ **/
+function BouncingElementContainer({
     children,
     className,
     ...props
-}: BouncingElementViewProps) {
+}: BouncingElementContainerProps) {
+    const { containerRef } = useBouncingElement();
+
     return (
-        <div className={cn("flex h-screen w-full", className)} {...props}>
+        <div
+            ref={containerRef}
+            className={cn("flex h-screen w-full", className)}
+            {...props}
+        >
             {children}
         </div>
     );
@@ -32,60 +66,129 @@ function BouncingElementView({
  **/
 function BouncingElementLayer({ children }: { children: React.ReactNode }) {
     return (
-        <div className="fixed inset-0 z-[-1] overflow-hidden">{children}</div>
+        <div className="inset-0 z-[-1] flex overflow-hidden">{children}</div>
     );
 }
 
 /**
  * BouncingElement is a element that will bounce when hit the browser window corner
  **/
-function BouncingElement({ children }: { children: React.ReactNode }) {
-    const [position, setPosition] = useState({ x: 0, y: 0 });
-    const [velocity, setVelocity] = useState({ x: 2, y: 2 });
+function BouncingElement({
+    children,
+    position,
+    velocity
+}: BouncingElementProps) {
+    const { containerRef } = useBouncingElement();
+
+    const [elementPosition, setElementPosition] = useState({ x: 0, y: 0 });
+    const [elementVelocity, setElementVelocity] = useState({ x: 2, y: 2 });
+
     const bouncingElementRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
-        setPosition(() => {
-            return {
-                x: Math.random() * window.innerWidth,
-                y: Math.random() * window.innerHeight
-            };
+        if (!containerRef.current) {
+            return;
+        }
+
+        // get container rect
+        const container = containerRef.current;
+        const containerRect = container.getBoundingClientRect();
+
+        setElementPosition(() => {
+            // container size
+            const width = containerRect.width;
+            const height = containerRect.height;
+
+            // get a random value based on container size
+            const randomWidth = Math.random() * width;
+            const randomHeight = Math.random() * height;
+
+            switch (position) {
+                case "start":
+                    return {
+                        x: randomWidth / 2,
+                        y: randomHeight / 2
+                    };
+                case "center":
+                    return {
+                        x: width / 2,
+                        y: randomHeight / 2
+                    };
+                case "end":
+                    return {
+                        x: width - randomWidth / 2,
+                        y: randomHeight
+                    };
+                default:
+                    return {
+                        x: randomWidth,
+                        y: randomHeight
+                    };
+            }
         });
-    }, []);
+
+        if (velocity) {
+            setElementVelocity(velocity);
+        }
+    }, [position, velocity, containerRef]);
 
     useEffect(() => {
+        if (!containerRef.current) {
+            return;
+        }
+
         if (!bouncingElementRef.current) {
             return;
         }
 
+        // get container rect
+        const container = containerRef.current;
+        const containerRect = container.getBoundingClientRect();
+
+        // bouncing element
         const bouncingElement = bouncingElementRef.current;
         const bouncingElementRect = bouncingElement.getBoundingClientRect();
 
         function updatePosition() {
-            const maxPosX = window.innerWidth - bouncingElementRect.width;
-            const maxPosY = window.innerHeight - bouncingElementRect.height;
+            // max position of a element can be based on the container size
+            const maxElementPositionX =
+                containerRect.width - bouncingElementRect.width;
+            const maxElementPositionY =
+                containerRect.height - bouncingElementRect.height;
 
-            setPosition((prev) => {
-                const newPostX = prev.x + velocity.x;
-                const newPostY = prev.y + velocity.y;
+            setElementPosition((prev) => {
+                const newElementPositionX = prev.x + elementVelocity.x;
+                const newElementPositionY = prev.y + elementVelocity.y;
 
-                let newVelocityX = velocity.x;
-                let newVelocityY = velocity.y;
+                let newElementVelocityX = elementVelocity.x;
+                let newElementVelocityY = elementVelocity.y;
 
-                if (newPostX >= maxPosX || newPostX <= 0) {
-                    newVelocityX *= -1;
-                } else if (newPostY >= maxPosY || newPostY <= 0) {
-                    newVelocityY *= -1;
+                if (
+                    newElementPositionX >= maxElementPositionX ||
+                    newElementPositionX <= 0
+                ) {
+                    newElementVelocityX *= -1;
+                } else if (
+                    newElementPositionY >= maxElementPositionY ||
+                    newElementPositionY <= 0
+                ) {
+                    newElementVelocityY *= -1;
                 }
 
-                setVelocity({
-                    x: newVelocityX,
-                    y: newVelocityY
+                setElementVelocity({
+                    x: newElementVelocityX,
+                    y: newElementVelocityY
                 });
 
                 return {
-                    x: Math.max(0, Math.min(maxPosX, newPostX)),
-                    y: Math.max(0, Math.min(maxPosY, newPostY))
+                    x: Math.max(
+                        0,
+                        Math.min(maxElementPositionX, newElementPositionX)
+                    ),
+                    y: Math.max(
+                        0,
+                        Math.min(maxElementPositionY, newElementPositionY)
+                    )
                 };
             });
         }
@@ -93,14 +196,14 @@ function BouncingElement({ children }: { children: React.ReactNode }) {
         const animation = setInterval(updatePosition, 16);
 
         return () => clearInterval(animation);
-    }, [velocity]);
+    }, [elementVelocity, containerRef]);
 
     return (
         <div
             ref={bouncingElementRef}
             className="absolute h-fit w-fit"
             style={{
-                transform: `translate3d(${position.x}px, ${position.y}px, 0)`
+                transform: `translate3d(${elementPosition.x}px, ${elementPosition.y}px, 0)`
             }}
         >
             {children}
