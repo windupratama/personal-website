@@ -81,7 +81,7 @@ function BouncingElement({
     const { containerRef } = useBouncingElement();
 
     const [elementPosition, setElementPosition] = useState({ x: 0, y: 0 });
-    const [elementVelocity, setElementVelocity] = useState({ x: 2, y: 2 });
+    const [elementVelocity, setElementVelocity] = useState({ x: 1, y: 1 });
 
     const bouncingElementRef = useRef<HTMLDivElement | null>(null);
 
