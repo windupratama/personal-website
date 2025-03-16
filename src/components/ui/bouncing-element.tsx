@@ -4,7 +4,15 @@
 
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import {
+    Children,
+    cloneElement,
+    isValidElement,
+    ReactElement,
+    useEffect,
+    useRef,
+    useState
+} from "react";
 import { cn } from "@/utils/cn";
 import { BouncingElementProvider } from "@/providers/bouncing-element-provider";
 import { useBouncingElement } from "@/hooks/useBouncingElement";
@@ -68,6 +76,46 @@ function BouncingElementLayer({ children }: { children: React.ReactNode }) {
     return (
         <div className="inset-0 z-[-1] flex overflow-hidden">{children}</div>
     );
+}
+
+/**
+ * BouncingELementFrontLayer is a layer for the children to show up in the front of the bouncing element
+ **/
+function BouncingElementFrontLayer({
+    children
+}: {
+    children: React.ReactNode;
+}) {
+    const modifiedChildren = Children.map(children, (child) => {
+        if (isValidElement(child)) {
+            const element = child as ReactElement<{ className?: string }>;
+
+            return cloneElement(element, {
+                className: cn("z-50", element.props.className)
+            });
+        }
+        return child;
+    });
+
+    return <>{modifiedChildren}</>;
+}
+
+/**
+ * BouncingELementFrontLayer is a layer for the children to show up in the back of the bouncing element
+ **/
+function BouncingElementBackLayer({ children }: { children: React.ReactNode }) {
+    const modifiedChildren = Children.map(children, (child) => {
+        if (isValidElement(child)) {
+            const element = child as ReactElement<{ className?: string }>;
+
+            return cloneElement(element, {
+                className: cn("z-[-70]", element.props.className)
+            });
+        }
+        return child;
+    });
+
+    return <>{modifiedChildren}</>;
 }
 
 /**
@@ -211,4 +259,10 @@ function BouncingElement({
     );
 }
 
-export { BouncingElementView, BouncingElementLayer, BouncingElement };
+export {
+    BouncingElementView,
+    BouncingElementLayer,
+    BouncingElementFrontLayer,
+    BouncingElementBackLayer,
+    BouncingElement
+};
