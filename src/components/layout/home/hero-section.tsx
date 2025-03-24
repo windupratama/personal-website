@@ -6,11 +6,11 @@ import { cn } from "@/utils/cn";
 import * as motion from "motion/react-client";
 import type { HTMLMotionProps } from "motion/react";
 import { HeroTitle } from "@/components/ui/home/hero-section/hero-title";
-import { HeroDescription } from "@/components/ui/home/hero-section/hero-description";
 import { GridTrailView } from "@/components/ui/grid-trail-view";
+import { HeroDescription } from "@/components/ui/home/hero-section/hero-description";
 
-// motion animations variants for hero section
-const heroContainerVariants = {
+// motion animations variants for hero section container
+const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
         opacity: 1,
@@ -26,16 +26,18 @@ function HeroSection({ className, ...props }: HTMLMotionProps<"div">) {
         <GridTrailView>
             <motion.div
                 className={cn(
-                    "flex h-screen w-full flex-col items-start justify-center px-8 py-8 lg:px-16",
+                    "flex h-[100svh] w-full flex-col items-start justify-center gap-4 px-8 py-4 lg:px-16",
                     className
                 )}
-                variants={heroContainerVariants}
+                variants={containerVariants}
                 initial="hidden"
                 animate="visible"
                 {...props}
             >
                 <HeroTitle />
-                <HeroDescription />
+                <div className="flex justify-center md:hidden">
+                    <HeroDescription />
+                </div>
             </motion.div>
         </GridTrailView>
     );

@@ -6,10 +6,12 @@
     --font-inter: var(--font-inter);
     --font-junicode: var(--font-junicode);
     --font-junicode-italic: var(--font-junicode-italic);
+    --font-redaction: var(--font-redaction);
+    --font-redaction-italic: var(--font-redaction-italic);
 }
 
 :root {
-    --background: oklch(0.948 0.0109 95.17);
+    --background: oklch(0.971 0.002 228.78);
     --foreground: oklch(0 0 0);
     --primary: oklch(0.546 0.245 262.881);
     --primary-hover: oklch(0.488 0.243 264.376);
@@ -27,7 +29,11 @@
 }
 
 @layer base {
+    html {
+        @apply text-lg;
+    }
+
     body {
-        @apply bg-background text-foreground;
+        @apply bg-background text-foreground lining-nums;
     }
 }

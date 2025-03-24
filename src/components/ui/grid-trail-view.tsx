@@ -20,7 +20,7 @@ function GridTrailView({ children, className, ...props }: GridTrailViewProps) {
     return (
         <GridTrailViewProvider>
             <div
-                className={cn("relative h-screen w-full", className)}
+                className={cn("relative h-[100svh] w-full", className)}
                 {...props}
             >
                 {/* trigger will be displayed at the very top */}
@@ -80,7 +80,7 @@ function GridTrailViewTrigger() {
 
     return (
         <div
-            className="absolute top-0 left-0 z-70 grid h-screen w-full overflow-hidden"
+            className="absolute top-0 left-0 z-70 grid h-[100svh] w-full overflow-hidden"
             style={{
                 gridTemplateColumns: `repeat(${columns}, 1fr)`
             }}
@@ -88,6 +88,7 @@ function GridTrailViewTrigger() {
             {gridCells.map((_, gridCellIndex) => (
                 <div
                     key={gridCellIndex}
+                    className="aspect-square"
                     onMouseOver={() => handleMouseOver(gridCellIndex)}
                 />
             ))}
@@ -105,7 +106,7 @@ function GridTrailViewUIHandler() {
 
     return (
         <div
-            className="absolute top-0 left-0 z-[-50] grid h-screen w-full overflow-hidden"
+            className="absolute top-0 left-0 z-[-50] grid h-[100svh] w-full overflow-hidden"
             style={{
                 gridTemplateColumns: `repeat(${columns}, 1fr)`
             }}

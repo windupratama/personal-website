@@ -7,9 +7,9 @@ import { textFromBlurVariants } from "@/animations/textAnimations";
 
 function HeroDescription() {
     return (
-        <div className="flex flex-col items-start gap-4">
+        <div className="flex flex-col items-start">
             <motion.h1
-                className="font-junicode text-primary text-lg lg:text-2xl"
+                className="font-junicode text-primary text-xl lg:text-2xl"
                 variants={textFromBlurVariants}
             >
                 A Creative Enthusiast Developer.

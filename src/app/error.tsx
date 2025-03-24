@@ -17,7 +17,7 @@ export default function Error({ error, reset }: ErrorProps) {
     }, [error]);
 
     return (
-        <div>
+        <div className="flex h-screen w-full flex-col items-center justify-center">
             <h1 className="text-red-500">Something went wrong</h1>
             <button onClick={() => reset()}>Refresh page</button>
         </div>
