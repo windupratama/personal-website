@@ -61,7 +61,7 @@ function BouncingElementContainer({
     return (
         <div
             ref={containerRef}
-            className={cn("flex h-screen w-full", className)}
+            className={cn("flex h-[100svh] w-full", className)}
             {...props}
         >
             {children}
