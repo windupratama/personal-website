@@ -11,7 +11,7 @@
 }
 
 :root {
-    --background: oklch(0.948 0.0109 95.17);
+    --background: oklch(0.971 0.002 228.78);
     --foreground: oklch(0 0 0);
     --primary: oklch(0.546 0.245 262.881);
     --primary-hover: oklch(0.488 0.243 264.376);
