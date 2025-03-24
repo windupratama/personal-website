@@ -32,11 +32,21 @@ const junicodeItalic = localFont({
     variable: "--font-junicode-italic"
 });
 
+const redaction = localFont({
+    src: "../../public/fonts/redaction-50/redaction-50.woff2",
+    variable: "--font-redaction"
+});
+
+const redactionItalic = localFont({
+    src: "../../public/fonts/redaction-50/redaction-50-italic.woff2",
+    variable: "--font-redaction-italic"
+});
+
 export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
     return (
         <html lang="en">
             <body
-                className={`${inter.className} ${junicode.variable} ${junicodeItalic.variable} antialiased`}
+                className={`${inter.className} ${junicode.variable} ${junicodeItalic.variable} ${redaction.variable} ${redactionItalic.variable} antialiased`}
             >
                 <div className="flex flex-col">
                     <Navbar />

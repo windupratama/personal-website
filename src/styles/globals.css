@@ -6,6 +6,8 @@
     --font-inter: var(--font-inter);
     --font-junicode: var(--font-junicode);
     --font-junicode-italic: var(--font-junicode-italic);
+    --font-redaction: var(--font-redaction);
+    --font-redaction-italic: var(--font-redaction-italic);
 }
 
 :root {
