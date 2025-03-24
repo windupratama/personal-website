@@ -28,7 +28,10 @@ function GridTrailViewProvider({ children }: GridTrailViewProviderProps) {
     useEffect(() => {
         const updateGrid = () => {
             if (window.innerWidth < 900) {
-                setColumns(10);
+                setColumns(5);
+            }
+            if (window.innerWidth < 1200) {
+                setColumns(15);
             } else {
                 setColumns(20);
             }
