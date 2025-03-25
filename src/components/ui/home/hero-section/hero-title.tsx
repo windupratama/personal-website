@@ -14,10 +14,10 @@ function HeroTitle() {
     return (
         <div className="flex h-full w-full flex-col items-center justify-end">
             <GridTrailViewBackLayer>
-                <div className="-mt-[0.5vw] -mb-[4vw] flex w-full items-center justify-between lg:-mt-[0.25vw] lg:-mb-[3vw]">
+                <div className="flex w-full items-center justify-between">
                     <div className="flex w-full overflow-hidden">
                         <motion.h1
-                            className="font-junicode text-primary text-[20vw] leading-none font-thin lg:text-[18vw]"
+                            className="font-junicode text-primary -mt-[0.5vw] -mb-[4vw] text-[20vw] leading-none font-thin lg:-mt-[0.25vw] lg:-mb-[3vw] lg:text-[18vw]"
                             variants={textFromBottomVariants}
                         >
                             {titles[0]}
@@ -29,9 +29,9 @@ function HeroTitle() {
                     </div>
                 </div>
             </GridTrailViewBackLayer>
-            <div className="self-end overflow-hidden">
+            <div className="flex w-full justify-end overflow-hidden">
                 <motion.h1
-                    className="font-redaction-italic text-primary -mt-[0.5vw] -mb-[4vw] text-[20vw] leading-none font-thin lg:text-[18vw]"
+                    className="font-redaction-italic text-primary -mt-[0.5vw] -mb-[4vw] text-[20vw] leading-none font-thin lg:-mt-[0.25vw] lg:-mb-[3vw] lg:text-[18vw]"
                     variants={textFromBottomVariants}
                 >
                     {titles[1]}
