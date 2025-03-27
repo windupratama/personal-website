@@ -14,7 +14,7 @@ interface GridTrailViewContext {
 }
 
 interface GridTrailViewProviderProps {
-    children: React.ReactNode;
+    children?: React.ReactNode;
 }
 
 const GridTrailViewContext = createContext<GridTrailViewContext | null>(null);

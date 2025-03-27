@@ -27,6 +27,10 @@ interface BouncingElementContainerProps
     children?: React.ReactNode;
 }
 
+interface BouncingElementLayerProps {
+    children?: React.ReactNode;
+}
+
 type BouncingElementPosition = "start" | "center" | "end";
 
 interface BouncingElementProps {
@@ -72,7 +76,7 @@ function BouncingElementContainer({
 /**
  * BouncingELementLayer is a layer for bouncing element space
  **/
-function BouncingElementLayer({ children }: { children: React.ReactNode }) {
+function BouncingElementLayer({ children }: BouncingElementLayerProps) {
     return (
         <div className="inset-0 z-[-1] flex overflow-hidden">{children}</div>
     );
@@ -81,11 +85,7 @@ function BouncingElementLayer({ children }: { children: React.ReactNode }) {
 /**
  * BouncingELementFrontLayer is a layer for the children to show up in the front of the bouncing element
  **/
-function BouncingElementFrontLayer({
-    children
-}: {
-    children: React.ReactNode;
-}) {
+function BouncingElementFrontLayer({ children }: BouncingElementLayerProps) {
     const modifiedChildren = Children.map(children, (child) => {
         if (isValidElement(child)) {
             const element = child as ReactElement<{ className?: string }>;
@@ -103,7 +103,7 @@ function BouncingElementFrontLayer({
 /**
  * BouncingELementFrontLayer is a layer for the children to show up in the back of the bouncing element
  **/
-function BouncingElementBackLayer({ children }: { children: React.ReactNode }) {
+function BouncingElementBackLayer({ children }: BouncingElementLayerProps) {
     const modifiedChildren = Children.map(children, (child) => {
         if (isValidElement(child)) {
             const element = child as ReactElement<{ className?: string }>;

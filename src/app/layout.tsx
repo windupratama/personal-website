@@ -9,7 +9,7 @@ import { SmoothScroll } from "@/components/ui/smooth-scroll";
 import { Navbar } from "@/components/ui/navbar/navbar";
 
 interface RootLayoutProps {
-    children: React.ReactNode;
+    children?: React.ReactNode;
 }
 
 export const metadata: Metadata = {
