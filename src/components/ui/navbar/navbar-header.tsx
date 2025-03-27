@@ -11,7 +11,7 @@ import Link from "next/link";
 import { UnderlineHover } from "@/components/ui/underline-hover";
 
 interface NavbarTriggerProps {
-    children: React.ReactNode;
+    children?: React.ReactNode;
 }
 
 // motion animation variants for navbar header

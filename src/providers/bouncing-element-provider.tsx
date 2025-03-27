@@ -14,7 +14,7 @@ const BouncingElementContext = createContext<BouncingElementContext | null>(
     null
 );
 
-function BouncingElementProvider({ children }: { children: React.ReactNode }) {
+function BouncingElementProvider({ children }: { children?: React.ReactNode }) {
     const containerRef = useRef<HTMLDivElement | null>(null);
 
     return (

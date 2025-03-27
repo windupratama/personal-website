@@ -12,7 +12,7 @@ interface NavbarContext {
 }
 
 interface NavbarProviderProps {
-    children: React.ReactNode;
+    children?: React.ReactNode;
 }
 
 const NavbarContext = createContext<NavbarContext | null>(null);
