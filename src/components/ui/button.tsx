@@ -24,13 +24,12 @@ export interface ButtonProps
     extends React.ButtonHTMLAttributes<HTMLButtonElement>,
         VariantProps<typeof buttonVariants> {
     children?: React.ReactNode;
-    ref?: React.RefObject<HTMLButtonElement>;
+    ref?: React.RefObject<HTMLButtonElement | null>;
 }
 
-function Button({ children, ref, className, variant, ...props }: ButtonProps) {
+function Button({ children, className, variant, ...props }: ButtonProps) {
     return (
         <button
-            ref={ref}
             className={cn(buttonVariants({ variant, className }))}
             {...props}
         >
