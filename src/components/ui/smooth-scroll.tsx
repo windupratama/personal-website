@@ -6,7 +6,7 @@ import { LenisProps, LenisRef, ReactLenis } from "lenis/react";
 
 interface SmoothScrollProps extends LenisProps {
     children?: React.ReactNode;
-    ref?: React.RefObject<LenisRef>;
+    ref?: React.RefObject<LenisRef | null>;
 }
 
 function SmoothScroll({ children, ref, ...props }: SmoothScrollProps) {
