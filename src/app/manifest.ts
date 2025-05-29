@@ -14,8 +14,8 @@ export default function manifest(): MetadataRoute.Manifest {
         description: env.NEXT_PUBLIC_APP_DESCRIPTION,
         start_url: "/",
         display: "standalone",
-        background_color: "#ffffff",
-        theme_color: "#000000",
+        background_color: "#f4f6f6",
+        theme_color: "#155dfc",
         icons: [
             {
                 src: "/favicon.ico",
