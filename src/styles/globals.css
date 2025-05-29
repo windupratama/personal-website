@@ -13,7 +13,12 @@
     --color-primary: var(--primary);
     --color-destructive: var(--destructive);
     --font-sans: var(--font-ronzino);
+    --font-serif: var(--font-junicode);
     --font-ronzino: var(--font-ronzino);
+    --font-junicode: var(--font-junicode);
+    --font-junicode-italic: var(--font-junicode-italic);
+    --font-redaction-35: var(--font-redaction-35);
+    --font-redaction-35-italic: var(--font-redaction-35-italic);
 }
 
 @layer base {
