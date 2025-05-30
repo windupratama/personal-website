@@ -23,6 +23,6 @@
 
 @layer base {
     body {
-        @apply bg-background text-foreground font-sans text-lg lining-nums;
+        @apply bg-background text-foreground selection:text-background selection:bg-primary font-sans text-lg lining-nums;
     }
 }
