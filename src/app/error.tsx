@@ -5,6 +5,8 @@
 "use client";
 
 import { useEffect } from "react";
+import { env } from "@/utils/env";
+import { ErrorContent } from "@/components/layout/error/error-content";
 
 interface ErrorProps {
     error: Error;
@@ -13,15 +15,9 @@ interface ErrorProps {
 
 export default function Error({ error, reset }: ErrorProps) {
     useEffect(() => {
+        document.title = `Error ── ${env.NEXT_PUBLIC_APP_NAME}`;
         console.error(error);
     }, [error]);
 
-    return (
-        <main className="flex h-[100svh] w-full flex-col items-center justify-center">
-            <h5 className="text-destructive">Something went wrong</h5>
-            <button className="cursor-pointer" onClick={() => reset()}>
-                Refresh
-            </button>
-        </main>
-    );
+    return <ErrorContent reset={reset} />;
 }
