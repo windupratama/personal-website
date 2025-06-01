@@ -51,7 +51,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <body
                 className={`${ronzino.variable} ${junicode.variable} ${junicodeItalic.variable} ${redaction35.variable} ${redaction35Italic.variable} antialiased`}
             >
-                <div className="flex flex-col">
+                <div className="flex flex-col overflow-hidden">
                     <Navbar />
                     <SmoothScroll>{children}</SmoothScroll>
                 </div>
