@@ -38,11 +38,11 @@ function ErrorContent({ reset }: ErrorContentProps) {
                 <motion.h5 variants={fromBlurVariants}>
                     Something went wrong, please try again later.
                 </motion.h5>
-                <UnderlineHover>
-                    <motion.div
-                        className="flex h-fit text-white mix-blend-difference"
-                        variants={fromBlurVariants}
-                    >
+                <motion.div
+                    className="flex h-fit text-white mix-blend-difference"
+                    variants={fromBlurVariants}
+                >
+                    <UnderlineHover>
                         <button
                             className="flex cursor-pointer items-center gap-2 text-nowrap"
                             onClick={() => reset()}
@@ -50,8 +50,8 @@ function ErrorContent({ reset }: ErrorContentProps) {
                             <h5>Refresh</h5>
                             <Refresh />
                         </button>
-                    </motion.div>
-                </UnderlineHover>
+                    </UnderlineHover>
+                </motion.div>
             </StaggerAnimation>
         </main>
     );

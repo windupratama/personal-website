@@ -36,11 +36,11 @@ function NotFoundContent() {
                     </span>
                     here, pal.
                 </motion.h5>
-                <UnderlineHover>
-                    <motion.div
-                        className="flex h-fit text-white mix-blend-difference"
-                        variants={fromBlurVariants}
-                    >
+                <motion.div
+                    className="flex h-fit text-white mix-blend-difference"
+                    variants={fromBlurVariants}
+                >
+                    <UnderlineHover>
                         <Link
                             href={"/"}
                             className="flex items-center gap-2 text-nowrap"
@@ -48,8 +48,8 @@ function NotFoundContent() {
                             <h5>Go back to home</h5>
                             <ArrowTopRight />
                         </Link>
-                    </motion.div>
-                </UnderlineHover>
+                    </UnderlineHover>
+                </motion.div>
             </StaggerAnimation>
         </main>
     );
