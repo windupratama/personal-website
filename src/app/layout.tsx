@@ -2,8 +2,7 @@ import "@/styles/globals.css";
 import type { Metadata } from "next";
 import { env } from "@/utils/env";
 import localFont from "next/font/local";
-import { SmoothScroll } from "@/components/ui/smooth-scroll";
-import { Navbar } from "@/components/ui/navbar/navbar";
+import { App } from "@/components/layout/app/app";
 
 interface RootLayoutProps {
     children?: React.ReactNode;
@@ -51,10 +50,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <body
                 className={`${ronzino.variable} ${junicode.variable} ${junicodeItalic.variable} ${redaction35.variable} ${redaction35Italic.variable} antialiased`}
             >
-                <div className="flex flex-col overflow-hidden">
-                    <Navbar />
-                    <SmoothScroll>{children}</SmoothScroll>
-                </div>
+                <App>{children}</App>
             </body>
         </html>
     );

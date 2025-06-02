@@ -2,19 +2,23 @@
  * A component that provide a smooth scroll effect to it's children
  */
 
-import { LenisProps, LenisRef, ReactLenis } from "lenis/react";
+"use client";
+
+import { LenisProps, ReactLenis } from "lenis/react";
+import { useApp } from "@/hooks/useApp";
 
 interface SmoothScrollProps extends LenisProps {
     children?: React.ReactNode;
-    ref?: React.RefObject<LenisRef | null>;
 }
 
 /**
  * Provides a smooth scroll effect to it's children
  */
-function SmoothScroll({ children, ref, ...props }: SmoothScrollProps) {
+function SmoothScroll({ children, ...props }: SmoothScrollProps) {
+    const { lenisRef } = useApp();
+
     return (
-        <ReactLenis ref={ref} root {...props}>
+        <ReactLenis ref={lenisRef} root {...props}>
             {children}
         </ReactLenis>
     );
