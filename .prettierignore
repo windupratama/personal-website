@@ -1,3 +1,6 @@
 # YAML files
 *.yml
 *.yaml
+
+# Prisma ORM
+/src/generated/prisma
