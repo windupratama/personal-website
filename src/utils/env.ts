@@ -16,6 +16,8 @@ export const env = createEnv({
             .default("development"),
         DATABASE_URL: z.string().url().min(1),
         DATABASE_DIRECT_URL: z.string().url().optional().or(z.literal("")),
+        BETTER_AUTH_SECRET: z.string().min(1),
+        BETTER_AUTH_URL: z.string().url().min(1),
     },
     client: {
         // Client environment variables
@@ -30,6 +32,8 @@ export const env = createEnv({
         NODE_ENV: process.env.NODE_ENV,
         DATABASE_URL: process.env.DATABASE_URL,
         DATABASE_DIRECT_URL: process.env.DATABASE_DIRECT_URL,
+        BETTER_AUTH_SECRET: process.env.BETTER_AUTH_SECRET,
+        BETTER_AUTH_URL: process.env.BETTER_AUTH_URL,
         // Client runtime environment variables
         NEXT_PUBLIC_APP_NAME: process.env.NEXT_PUBLIC_APP_NAME,
         NEXT_PUBLIC_APP_DESCRIPTION: process.env.NEXT_PUBLIC_APP_DESCRIPTION,

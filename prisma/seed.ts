@@ -3,11 +3,24 @@
  */
 
 import { PrismaClient } from "@/generated/prisma";
+import { runSeeder } from "@/utils/runSeeder";
+import { userSeeder } from "./seeds/user.seed";
 
 const prisma = new PrismaClient();
 
 async function main() {
-    // Seeder goes here ...
+    // List all the seeder here
+    const seeders = [
+        {
+            name: "User Seeder",
+            handler: userSeeder,
+        },
+    ];
+
+    // Run all the seeders
+    for (const seeder of seeders) {
+        await runSeeder(seeder);
+    }
 }
 
 main()
