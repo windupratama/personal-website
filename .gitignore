@@ -15,6 +15,9 @@
 /.next/
 /out/
 
+# Prisma ORM
+/src/generated/prisma
+
 # Production
 /build
 
