@@ -5,6 +5,7 @@
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import prisma from "@/lib/prisma";
+import { env } from "@/utils/env";
 
 /**
  * Better Auth server instance
@@ -16,6 +17,7 @@ export const auth = betterAuth({
     emailAndPassword: {
         enabled: true,
         autoSignIn: false,
+        disableSignUp: !env.NEXT_PUBLIC_ENABLE_SIGN_UP,
     },
     advanced: {
         database: {

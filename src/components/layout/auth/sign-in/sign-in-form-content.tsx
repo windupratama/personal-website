@@ -22,6 +22,7 @@ import { Input, PasswordInput } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { RiDoorLockBoxFill as DoorLockBox } from "react-icons/ri";
 import Link from "next/link";
+import { env } from "@/utils/env";
 
 interface SignInFormContentProps<T extends FieldValues> {
     form: UseFormReturn<T>;
@@ -90,11 +91,13 @@ function SignInFormContent<T extends FieldValues>({
                 </Form>
             </CardContent>
             <CardFooter>
-                <Link href="/sign-up">
-                    <CardDescription className="text-primary underline">
-                        Got no account yet? Sign up now!
-                    </CardDescription>
-                </Link>
+                {env.NEXT_PUBLIC_ENABLE_SIGN_UP && (
+                    <Link href="/sign-up">
+                        <CardDescription className="text-primary underline">
+                            Got no account yet? Sign up now!
+                        </CardDescription>
+                    </Link>
+                )}
             </CardFooter>
         </Card>
     );

@@ -26,6 +26,7 @@ export const env = createEnv({
         NEXT_PUBLIC_APP_VERSION: z.string().min(1),
         NEXT_PUBLIC_APP_AUTHOR: z.string().min(1),
         NEXT_PUBLIC_APP_URL: z.string().min(1),
+        NEXT_PUBLIC_ENABLE_SIGN_UP: z.boolean().default(true),
     },
     runtimeEnv: {
         // Server runtime environment variables
@@ -40,5 +41,8 @@ export const env = createEnv({
         NEXT_PUBLIC_APP_VERSION: process.env.NEXT_PUBLIC_APP_VERSION,
         NEXT_PUBLIC_APP_AUTHOR: process.env.NEXT_PUBLIC_APP_AUTHOR,
         NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
+        NEXT_PUBLIC_ENABLE_SIGN_UP:
+            process.env.NEXT_PUBLIC_ENABLE_SIGN_UP?.toLocaleLowerCase() ===
+            "true",
     },
 });

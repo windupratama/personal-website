@@ -2,6 +2,11 @@
  * Application related authentication UI layout
  */
 
+"use client";
+
+import { usePathname } from "next/navigation";
+import { env } from "@/utils/env";
+import NotFound from "@/app/not-found";
 import { Dialog } from "@/components/ui/dialog";
 
 interface AuthLayoutProps {
@@ -9,6 +14,13 @@ interface AuthLayoutProps {
 }
 
 export default function AuthLayout({ children }: AuthLayoutProps) {
+    const pathname = usePathname();
+
+    // If sign-up is disabled, redirect to not found page when trying to access the sign-up page
+    if (!env.NEXT_PUBLIC_ENABLE_SIGN_UP && pathname === "/sign-up") {
+        return <NotFound />;
+    }
+
     return (
         <div className="flex h-[100svh] w-full justify-between">
             <div className="bg-primary hidden h-full w-full items-center justify-center lg:flex">
