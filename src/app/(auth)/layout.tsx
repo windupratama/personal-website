@@ -7,6 +7,7 @@
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { Dialog } from "@/components/ui/dialog";
 
 interface AuthLayoutProps {
     children?: React.ReactNode;
@@ -43,7 +44,7 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
                 </div>
             </div>
             <div className="flex h-full w-full items-center justify-center">
-                {children}
+                <Dialog>{children}</Dialog>
             </div>
         </div>
     );

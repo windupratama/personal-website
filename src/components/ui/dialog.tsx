@@ -175,8 +175,16 @@ function DialogTrigger({ children, ...props }: DialogTriggerProps) {
 function DialogAction({ children, onClick, ...props }: DialogActionProps) {
     const { toggleDialog } = useDialog();
 
+    async function handleClick(event: React.MouseEvent<HTMLButtonElement>) {
+        if (onClick) {
+            await Promise.resolve(onClick(event));
+        }
+
+        toggleDialog();
+    }
+
     return (
-        <Button onClick={onClick ? onClick : toggleDialog} {...props}>
+        <Button onClick={handleClick} {...props}>
             {children}
         </Button>
     );

@@ -10,10 +10,9 @@ import { signUpSchema } from "@/schemas/auth.schema";
 import { z } from "zod";
 import { authClient } from "@/lib/auth-client";
 import { useDialog } from "@/hooks/useDialog";
-
 import { useRouter } from "next/navigation";
 import { SignUpFormContent } from "@/components/layout/auth/sign-up/sign-up-form-content";
-import { SignUpDialogContent } from "@/components/layout/auth/sign-up/sign-up-dialog-content";
+import { AuthDialogContent } from "@/components/layout/auth/auth-dialog-content";
 
 export default function SignUp() {
     const form = useForm({
@@ -65,7 +64,7 @@ export default function SignUp() {
             {/* Sign-up Form */}
             <SignUpFormContent form={form} onSubmit={handleSubmit} />
             {/* Sign-up dialog content pop over */}
-            <SignUpDialogContent data={data} />
+            <AuthDialogContent data={data} />
         </>
     );
 }

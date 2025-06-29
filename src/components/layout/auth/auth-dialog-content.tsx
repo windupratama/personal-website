@@ -1,5 +1,5 @@
 /**
- * A component that contains the sign-in dialog contents
+ * A component that contains the auth related dialog contents
  */
 
 import { DialogData } from "@/providers/dialog-provider";
@@ -13,14 +13,14 @@ import {
     DialogItem,
 } from "@/components/ui/dialog";
 
-interface SignInDialogContentProps {
+interface AuthDialogContentProps {
     data?: DialogData;
 }
 
 /**
- * Displays the sign-in dialog content
+ * Displays the auth related dialog content
  */
-function SignInDialogContent({ data }: SignInDialogContentProps) {
+function AuthDialogContent({ data }: AuthDialogContentProps) {
     return (
         <DialogContent>
             <DialogHeader>
@@ -38,4 +38,4 @@ function SignInDialogContent({ data }: SignInDialogContentProps) {
     );
 }
 
-export { SignInDialogContent };
+export { AuthDialogContent };

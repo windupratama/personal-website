@@ -12,7 +12,7 @@ import { authClient } from "@/lib/auth-client";
 import { useDialog } from "@/hooks/useDialog";
 import { useRouter } from "next/navigation";
 import { SignInFormContent } from "@/components/layout/auth/sign-in/sign-in-form-content";
-import { SignInDialogContent } from "@/components/layout/auth/sign-in/sign-in-dialog-content";
+import { AuthDialogContent } from "@/components/layout/auth/auth-dialog-content";
 
 export default function SignIn() {
     const form = useForm({
@@ -55,7 +55,7 @@ export default function SignIn() {
             {/* Sign-in Form */}
             <SignInFormContent form={form} onSubmit={handleSubmit} />
             {/* Sign-in dialog content pop over */}
-            <SignInDialogContent data={data} />
+            <AuthDialogContent data={data} />
         </>
     );
 }
