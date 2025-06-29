@@ -2,11 +2,6 @@
  * Application related authentication UI layout
  */
 
-"use client";
-
-import { authClient } from "@/lib/auth-client";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 import { Dialog } from "@/components/ui/dialog";
 
 interface AuthLayoutProps {
@@ -14,20 +9,6 @@ interface AuthLayoutProps {
 }
 
 export default function AuthLayout({ children }: AuthLayoutProps) {
-    const { data: session, isPending } = authClient.useSession();
-    const router = useRouter();
-
-    // Fallback if a user who already has a session tries to access the authentication related pages
-    useEffect(() => {
-        if (session) {
-            router.replace("/");
-        }
-    }, [session, router]);
-
-    if (session || isPending) {
-        return null;
-    }
-
     return (
         <div className="flex h-[100svh] w-full justify-between">
             <div className="bg-primary hidden h-full w-full items-center justify-center lg:flex">
