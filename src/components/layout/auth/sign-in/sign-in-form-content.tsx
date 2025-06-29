@@ -1,5 +1,5 @@
 /**
- * A component that contains the application sign-up form contents
+ * A component that contains the application sign-in form contents
  */
 
 import { FieldValues, UseFormReturn } from "react-hook-form";
@@ -20,30 +20,30 @@ import {
 } from "@/components/ui/form";
 import { Input, PasswordInput } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { RiShieldUserFill as ShieldUser } from "react-icons/ri";
+import { RiDoorLockBoxFill as DoorLockBox } from "react-icons/ri";
 import Link from "next/link";
 
-interface SignUpFormContentProps<T extends FieldValues> {
+interface SignInFormContentProps<T extends FieldValues> {
     form: UseFormReturn<T>;
     onSubmit: (data: T) => void;
 }
 
 /**
- * Displays the sign-up form content
+ * Displays the sign-in form content
  */
-function SignUpFormContent<T extends FieldValues>({
+function SignInFormContent<T extends FieldValues>({
     form,
     onSubmit,
-}: SignUpFormContentProps<T>) {
+}: SignInFormContentProps<T>) {
     return (
         <Card className="bg-transparent">
             <CardHeader>
                 <div className="flex items-center gap-4">
-                    <ShieldUser className="h-6 w-6" />
-                    <CardTitle>Sign Up</CardTitle>
+                    <DoorLockBox className="h-6 w-6" />
+                    <CardTitle>Sign In</CardTitle>
                 </div>
                 <CardDescription>
-                    Get started by signing up your account
+                    Hey there! Sign in to access your account
                 </CardDescription>
             </CardHeader>
             <CardContent>
@@ -58,21 +58,6 @@ function SignUpFormContent<T extends FieldValues>({
                                         {...field}
                                         type="email"
                                         placeholder="example@mail.com"
-                                        isInvalid={fieldState.invalid}
-                                        disabled={form.formState.isSubmitting}
-                                    />
-                                    <FormError fieldState={fieldState} />
-                                </FormItem>
-                            )}
-                        />
-                        <FormField
-                            name="name"
-                            render={(field, fieldState) => (
-                                <FormItem>
-                                    <FormLabel>Name</FormLabel>
-                                    <Input
-                                        {...field}
-                                        placeholder="Your name"
                                         isInvalid={fieldState.invalid}
                                         disabled={form.formState.isSubmitting}
                                     />
@@ -99,15 +84,15 @@ function SignUpFormContent<T extends FieldValues>({
                             type="submit"
                             disabled={form.formState.isSubmitting}
                         >
-                            Sign Up
+                            Sign In
                         </Button>
                     </div>
                 </Form>
             </CardContent>
             <CardFooter>
-                <Link href="/sign-in">
+                <Link href="/sign-up">
                     <CardDescription className="text-primary underline">
-                        Already have an account? Sign in!
+                        Got no account yet? Sign up now!
                     </CardDescription>
                 </Link>
             </CardFooter>
@@ -115,4 +100,4 @@ function SignUpFormContent<T extends FieldValues>({
     );
 }
 
-export { SignUpFormContent };
+export { SignInFormContent };
