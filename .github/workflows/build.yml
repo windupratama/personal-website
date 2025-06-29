@@ -16,6 +16,11 @@ jobs:
       NEXT_PUBLIC_APP_VERSION: ${{ vars.NEXT_PUBLIC_APP_VERSION }}
       NEXT_PUBLIC_APP_AUTHOR: ${{ vars.NEXT_PUBLIC_APP_AUTHOR }}
       NEXT_PUBLIC_APP_URL: ${{ vars.NEXT_PUBLIC_APP_URL }}
+      NEXT_PUBLIC_ENABLE_SIGN_UP: ${{ vars.NEXT_PUBLIC_ENABLE_SIGN_UP }}
+      DATABASE_URL: ${{  secrets.DATABASE_URL }}
+      DATABASE_DIRECT_URL: ${{ secrets.DATABASE_DIRECT_URL }}
+      BETTER_AUTH_SECRET: ${{ secrets.BETTER_AUTH_SECRET }}
+      BETTER_AUTH_URL: ${{ secrets.BETTER_AUTH_URL }}      
 
     steps:
       - name: Checkout repository
