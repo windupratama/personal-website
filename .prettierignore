@@ -1,0 +1,10 @@
+# Testing
+/coverage
+
+# Build Artifacts
+.next/
+out/
+
+# YAML files
+*.yml
+*.yaml

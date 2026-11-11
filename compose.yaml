@@ -1,0 +1,19 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      secrets:
+        - app_env
+    ports:
+      - "${DOCKER_HOST_PORT:-3000}:${DOCKER_CONTAINER_PORT:-3000}"
+    hostname: ${DOCKER_HOSTNAME:-0.0.0.0}
+    environment:
+      - NODE_ENV=${DOCKER_NODE_ENV:-production}
+      - PORT=${DOCKER_CONTAINER_PORT:-3000}
+    env_file:
+      - .env
+    restart: unless-stopped
+secrets:
+  app_env:
+    file: ./.env

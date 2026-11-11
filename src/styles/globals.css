@@ -1,0 +1,40 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme inline {
+    --font-sans: var(--font-geist-sans);
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-primary: var(--primary);
+    --color-secondary: var(--secondary);
+    --color-muted: var(--muted);
+    --color-accent: var(--accent);
+    --color-destructive: var(--destructive);
+    --radius-sm: calc(var(--radius) * 0.6);
+    --radius-md: calc(var(--radius) * 0.8);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) * 1.4);
+    --radius-2xl: calc(var(--radius) * 1.8);
+    --radius-3xl: calc(var(--radius) * 2.2);
+    --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.145 0 0);
+    --primary: oklch(0.5697 0.2177 267.7);
+    --secondary: oklch(0.97 0 0);
+    --muted: oklch(0.97 0 0);
+    --accent: oklch(0.97 0 0);
+    --destructive: oklch(0.577 0.245 27.325);
+    --radius: 1.25rem;
+}
+
+@layer base {
+    body {
+        @apply bg-background text-foreground selection:text-background selection:bg-primary text-lg lining-nums;
+    }
+    html {
+        @apply font-sans;
+    }
+}
